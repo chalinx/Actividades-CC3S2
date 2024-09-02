@@ -37,17 +37,49 @@ public:
             l[v].push_back({wt, u});
     }
 
+    int dijkstra(int src, int dest) {
+        vector<int> dist(V, INT_MAX);
+        priority_queue<pii, vector<pii>, greater<pii>> pq; // Min-Heap
 
-s
+        dist[src] = 0;
+        pq.push({0, src});
+
+        while (!pq.empty()) {
+            int distTillNow = pq.top().first;
+            int node = pq.top().second; 
+            pq.pop();
+
+            for (auto nbrPair : l[node]) {
+                int nbr = nbrPair.second;
+                int currentEdge = nbrPair.first;
+
+                if (distTillNow + currentEdge < dist[nbr]) {
+                    dist[nbr] = distTillNow + currentEdge;
+                    pq.push({dist[nbr], nbr});
+                }
+            }
+        }
+
+        for (int i = 0; i < V; i++)
+            cout << "Node " << i << " Dist " << dist[i] << endl;
+
+        return dist[dest];
+    }
+
 };
 
 
-void solve(){
-	
-		
+void solve() {
+    Graph g(5);
+    g.addEdge(0, 1, 1);
+    g.addEdge(1, 2, 1);
+    g.addEdge(0, 2, 4);
+    g.addEdge(0, 3, 7);
+    g.addEdge(3, 2, 2);
+    g.addEdge(3, 4, 3);
 
+    cout << g.dijkstra(0, 4) << endl;
 }
-
 
 int main(){
 
