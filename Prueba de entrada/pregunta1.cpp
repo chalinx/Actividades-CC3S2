@@ -73,6 +73,7 @@ public:
             }
         }
 
+        // mostrar recorrido
         for (int i = 0; i < V; i++)
             cout << "Node " << i << " Dist " << dist[i] << endl;
 
