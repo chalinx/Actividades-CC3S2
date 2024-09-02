@@ -37,6 +37,30 @@ int binarySearch(vector<int> &arr,int n,int key){
 	return -1;
 }
 
+void solve(){
+
+	int n; cin>>n;
+	vector<int> r={1,1,1,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,7,7,7,7,7,9};
+	int tam=r.size()-1;
+
+
+	if(tam==0){
+		cout<<"No hay registro en las tablas";
+	}
+	else if(tam==1){
+		cout<<"Solo hay un registro en la tabla";
+	}
+	else {
+		int val=binarySearch(r,tam-1,n);
+
+		if(val==-1)
+			cout<<"no se ha encontrado registro de alguna tabla indexada";
+		else 
+			cout<<"se ha encontrado la tabla indexada en la posicion "<<val;
+	}
+		
+
+}
 
 
 
