@@ -21,15 +21,19 @@
 using namespace std;
 
 class Graph {
-	int V;
 
+    // numero de vertices
+	int V; 
+    // listad e adyacencia
 	list<pair<int,int>>*l;
 public:
+    // definimos el numero e nodos en la lista de adyacnecia
     Graph(int v) {
         this->V = v;
         l = new list<pair<int, int>>[V];
     }
 
+    // enlazamos los nodos, si undir es true es un digrafo caso contrario es una grafo unidirecional
     void addEdge(int u, int v, int wt, bool undir = true) {
         l[u].push_back({wt, v});
 
@@ -37,22 +41,31 @@ public:
             l[v].push_back({wt, u});
     }
 
+
     int dijkstra(int src, int dest) {
+        // creamos un vector para las distancia y una cola de prioridad para
+        // dar prioridad a los de menor distancia
         vector<int> dist(V, INT_MAX);
         priority_queue<pii, vector<pii>, greater<pii>> pq; // Min-Heap
+
 
         dist[src] = 0;
         pq.push({0, src});
 
-        while (!pq.empty()) {
-            int distTillNow = pq.top().first;
-            int node = pq.top().second; 
-            pq.pop();
 
+        while (!pq.empty()) {
+            // obtenemos el menor valor del la cola de prioridad
+            int distTillNow = pq.top().first;
+            //obtenemos el nodo 
+            int node = pq.top().second; 
+            pq.pop();// eliminamos
+
+            // visitamos los vecimnos del nodo actual
             for (auto nbrPair : l[node]) {
                 int nbr = nbrPair.second;
                 int currentEdge = nbrPair.first;
-
+                // si la suma actual es de los pesos es menor entonces actualizamos la
+                // distancia hasta el nodo actual
                 if (distTillNow + currentEdge < dist[nbr]) {
                     dist[nbr] = distTillNow + currentEdge;
                     pq.push({dist[nbr], nbr});
