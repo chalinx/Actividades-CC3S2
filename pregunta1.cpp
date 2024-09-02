@@ -25,10 +25,10 @@ class Graph {
 
 	list<pair<int,int>>*l;
 public:
-	Graph(int v){
-		this->V=v;
-		l=new list<pait<int,int>>[V];
-	}
+    Graph(int v) {
+        this->V = v;
+        l = new list<pair<int, int>>[V];
+    }
 
     void addEdge(int u, int v, int wt, bool undir = true) {
         l[u].push_back({wt, v});
@@ -88,7 +88,7 @@ freopen("D:/Problem Set Competitiva/input.txt","r",stdin);
 freopen("D:/Problem Set Competitiva/output.txt","w",stdout);
 #endif
 fast
-	int t; cin>>t;
+	int t=1;
 	while(t--){
 		solve();
 	}
