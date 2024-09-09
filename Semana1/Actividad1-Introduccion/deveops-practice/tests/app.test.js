@@ -1,20 +1,15 @@
 const request = require('supertest');
-const app = require('../src/app');
+const { app, server } = require('../src/app'); // Importa tanto la app como el servidor
 
 describe('GET /', () => {
-    let server;
+  
+  afterAll(() => {
+    server.close(); // Cierra el servidor después de que las pruebas hayan terminado
+  });
 
-    beforeAll(() => {
-        server = app.listen(0); // Usar 0 permite al sistema asignar un puerto libre automáticamente
-    });
-
-    afterAll(() => {
-        server.close(); // Cierra el servidor después de que las pruebas hayan terminado
-    });
-
-    it('should return Hello, World!', async () => {
-        const res = await request(app).get('/');
-        expect(res.statusCode).toEqual(200);
-        expect(res.text).toBe('Hello, World!');
-    });
+  it('should return Hello, World!', async () => {
+    const res = await request(app).get('/'); // Usa `app` directamente, ya que el servidor ya está corriendo
+    expect(res.statusCode).toEqual(200);
+    expect(res.text).toBe('Hello, World!');
+  });
 });
