@@ -26,4 +26,4 @@ jobs:
 
       - name: Run tests
         run: npm test
-        working-directory: ${{ github.workspace }}/Semana1/Actividad1-Introduccion/devops-practice
+        working-directory: Semana1/Actividad1-Introduccion/devops-practice
