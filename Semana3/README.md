@@ -1,3 +1,1 @@
 # Mi Proyecto
-Implementando una nueva característica...
-Este proyecto es un ejemplo de cómo usar Git.
