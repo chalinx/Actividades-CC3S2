@@ -16,6 +16,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: List files (debugging)
+        run: ls -R
+        working-directory: ./Semana1/Actividad1-Introduccion
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
