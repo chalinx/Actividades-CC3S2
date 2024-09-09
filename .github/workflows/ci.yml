@@ -16,12 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Print working directory (debugging)
-        run: pwd
-
-      - name: List all files (debugging)
-        run: ls -R ${{ github.workspace }}
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -29,8 +23,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ${{ github.workspace }}/Semana1/Actividad1-Introduccion/devops-practice
 
       - name: Run tests
         run: npm test
-        working-directory: ${{ github.workspace }}/Semana1/Actividad1-Introduccion/devops-practice
