@@ -27,3 +27,9 @@ jobs:
       - name: Run tests
         run: npm test
         working-directory: Semana1/Actividad1-Introduccion/deveops-practice
+
+      - name: Build Docker image
+        run: docker build -t devops-practice Semana1/Actividad1-Introduccion/deveops-practice/.
+
+      - name: Run Docker container
+        run: docker run -d -p 3000:3000 devops-practice
