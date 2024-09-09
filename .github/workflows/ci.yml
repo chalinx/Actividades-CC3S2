@@ -1,4 +1,4 @@
-name: CI Workflow
+name: CI Pipeline
 
 on:
   push:
@@ -23,6 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./Semana1/Actividad1-Introduccion/devops-practice
 
       - name: Run tests
         run: npm test
+        working-directory: ./Semana1/Actividad1-Introduccion/devops-practice
