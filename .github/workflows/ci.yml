@@ -25,14 +25,16 @@ jobs:
         run: npm install
 
       - name: Build Docker image
-        run: docker build -t devops-practice Semana1/Actividad1-Introduccion/deveops-practice/.
+        run: docker build -t devops-practice Semana2/devops-practice/.
 
       - name: Run tests
         run: npm test
-        working-directory: Semana1/Actividad1-Introduccion/deveops-practice
+        working-directory: Semana2/devops-practice
 
       - name: Run Docker container
         run: docker run -d -p 3000:3000 devops-practice
 
       - name: Run security audit
-        run: npm audit    
+        run: npm audit
+        working-directory: Semana2/devops-practice
+    
