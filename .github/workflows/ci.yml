@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Semana2/devops-practice/
+        working-directory: Semana2/Actividad2/devops-practice
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
