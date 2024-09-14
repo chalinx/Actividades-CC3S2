@@ -1,14 +1,9 @@
 const request = require('supertest');
-const { app, server } = require('../src/app'); // Importa tanto la app como el servidor
+const app = require('../src/app');  // Importa la app sin escuchar el puerto
 
 describe('GET /', () => {
-  
-  afterAll(() => {
-    server.close(); // Cierra el servidor después de que las pruebas hayan terminado
-  });
-
   it('should return Hello, World!', async () => {
-    const res = await request(app).get('/'); // Usa `app` directamente, ya que el servidor ya está corriendo
+    const res = await request(app).get('/');  // No necesitas app.listen aquí
     expect(res.statusCode).toEqual(200);
     expect(res.text).toBe('Hello, World!');
   });
